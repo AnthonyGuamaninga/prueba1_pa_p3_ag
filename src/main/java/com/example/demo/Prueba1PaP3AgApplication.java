@@ -7,18 +7,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.banco.modelo.Cuenta;
-import com.example.demo.banco.service.ICuentaService;
-import com.example.demo.banco.service.ITransferenciaService;
+import com.example.demo.correccion.modelo.CuentaC;
+import com.example.demo.correccion.service.ICuentaCService;
+import com.example.demo.correccion.service.ITransferenciaCService;
 
 @SpringBootApplication
 public class Prueba1PaP3AgApplication implements CommandLineRunner{
 
 	@Autowired
-	private ICuentaService cuentaService;
-	
+	private ICuentaCService cuentaService;
 	@Autowired
-	private ITransferenciaService iTransferenciaService;
+	private ITransferenciaCService iTransferenciaCService;
 	
 	
 	public static void main(String[] args) {
@@ -30,27 +29,27 @@ public class Prueba1PaP3AgApplication implements CommandLineRunner{
 		// TODO Auto-generated method stub
 		
 		// FUNCIONALIDAD 1
-		Cuenta cuenta = new Cuenta();
-		cuenta.setNumero("1");
+		CuentaC cuenta = new CuentaC();
+		cuenta.setNumero("01");
 		cuenta.setCedula("1123");
 		cuenta.setTipo("Ahorros");
-		cuenta.setSaldo(new BigDecimal(100));
+		cuenta.setSaldo(new BigDecimal(200));
 		//this.cuentaService.crear(cuenta);
 		
-		Cuenta cuenta2 = new Cuenta();
-		cuenta2.setNumero("2");
+		CuentaC cuenta2 = new CuentaC();
+		cuenta2.setNumero("02");
 		cuenta2.setCedula("2223");
-		cuenta2.setSaldo(new BigDecimal(50));
+		cuenta2.setSaldo(new BigDecimal(150));
 		cuenta2.setTipo("Ahorros");		
 		//this.cuentaService.crear(cuenta2);
 		
 		// FUNCIONALIDAD 2
 		BigDecimal monto = new BigDecimal(10);
-		this.iTransferenciaService.realizarTransferencia(cuenta.getNumero(), cuenta2.getNumero(), monto);
+		this.iTransferenciaCService.realizar(cuenta.getNumero(), cuenta2.getNumero(), monto);
 		
 		// FUNCIONALIDAD 3
-		System.out.println("Saldo Origen: ");
-		this.cuentaService.buscar(cuenta.getNumero());
+		//System.out.println("Saldo Origen: ");
+		//this.cuentaService.buscar(cuenta.getNumero());
 		
 		
 		
